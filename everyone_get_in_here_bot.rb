@@ -4,7 +4,6 @@ CONFIG = YAML.load_file('config/config.yaml')
 TEXT_CHANNEL_TYPE_NUMBER = 0
 
 bot = Discordrb::Commands::CommandBot.new token: CONFIG['token']
-
 user_played_game_hash = {}
 
 bot.playing do |event|
