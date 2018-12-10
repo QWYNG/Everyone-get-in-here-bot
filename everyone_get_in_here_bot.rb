@@ -2,6 +2,7 @@ require 'discordrb'
 require 'yaml'
 CONFIG = YAML.load_file('config/config.yaml')
 TEXT_CHANNEL_TYPE_NUMBER = 0
+TWO_HOUR_SEC = 7200
 
 bot = Discordrb::Commands::CommandBot.new token: CONFIG['token']
 user_played_game_hash = {}
@@ -18,7 +19,7 @@ bot.playing do |event|
     end
     event.bot.send_message(first_text_channel, "#{user_name} playing #{now_playng_game} now!")
     user_played_game_hash[user_name] = now_playng_game
-    sleep(7200)
+    sleep(TWO_HOUR_SEC)
     user_played_game_hash.delete(user_name)
   end
 end
