@@ -12,13 +12,17 @@ bot.playing do |event|
   user_name = event.user.name
 
   if now_playng_game && now_playng_game != user_played_game_hash[user_name]
+    # 最初に見つけたテキストチャンネルをfirst_text_channelに代入
     first_text_channel = nil
     event.server.channels.each do |channel|
       first_text_channel ||= channel if channel.type == TEXT_CHANNEL_TYPE_NUMBER
       break if first_text_channel
     end
+    # メッセージを送信
     event.bot.send_message(first_text_channel, "#{user_name} playing #{now_playng_game} now!")
+    # プレイしてるゲームをuser_played_game_hashに記録
     user_played_game_hash[user_name] = now_playng_game
+    # 二時間後に記録はリセット
     sleep(TWO_HOUR_SEC)
     user_played_game_hash.delete(user_name)
   end
