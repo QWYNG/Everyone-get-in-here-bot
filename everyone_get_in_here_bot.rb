@@ -20,7 +20,7 @@ bot.playing do |event|
     event.bot.send_message(first_text_channel, "#{user_name} playing #{now_playng_game} now!")
     user_played_game_hash[user_name] = now_playng_game
     sleep(7200)
-    user_played_game_hash = {}
+    user_played_game_hash.delete(user_name)
   end
 end
 
