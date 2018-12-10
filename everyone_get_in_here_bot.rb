@@ -12,7 +12,7 @@ bot.playing do |event|
   now_playng_game = event.user.game
   before_playing_game = user_before_playing_game_hash[user_name]
 
-  # ゲームをプレイしていてかつ前プレイしてるゲームと違うときのみ反応
+  # ゲームをプレイしはじめてかつ前プレイしてるゲームと違うときのみ反応
   if now_playng_game && now_playng_game != before_playing_game
     # 最初に見つけたテキストチャンネルをfirst_text_channelに代入
     first_text_channel = nil
