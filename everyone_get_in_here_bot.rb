@@ -36,7 +36,7 @@ bot.playing do |event|
 end
 
 bot.command :help do |event|
-  event.bot.send_message("This is a bot that notifies the server that the user started the game on the server's first text channel")
+  event.respond("This is a bot that notifies the server that the user started the game on the server's first text channel")
 end
 
 bot.run
