@@ -4,7 +4,7 @@ CONFIG = YAML.load_file('config/config.yaml')
 TEXT_CHANNEL_TYPE_NUMBER = 0
 TWO_HOUR_SEC = 7200
 
-bot = Discordrb::Commands::CommandBot.new token: CONFIG['token']
+bot = Discordrb::Commands::CommandBot.new token: CONFIG['token'], prefix: '!'
 user_before_playing_game_hash = {}
 
 def get_first_text_channel(channles)
@@ -33,6 +33,10 @@ bot.playing do |event|
     sleep(TWO_HOUR_SEC)
     user_before_playing_game_hash.delete(user_name) if user_before_playing_game_hash[user_name] == now_playng_game
   end
+end
+
+bot.command :help do |event|
+  event.bot.send_message("This is a bot that notifies the server that the user started the game on the server's first text channel")
 end
 
 bot.run
