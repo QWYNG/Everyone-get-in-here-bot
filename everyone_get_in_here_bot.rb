@@ -29,7 +29,7 @@ bot.playing do |event|
     event.bot.send_message(first_text_channel, "#{user_name} playing #{now_playng_game} now!")
     # プレイしてるゲームをuser_played_game_hashに記録
     user_before_playing_game_hash[user_name] = now_playng_game
-    # 二時間後に記録はリセット。以前のゲームの記録リセットするスレッドあればkillする
+    # 二時間後に記録はリセット
     sleep(TWO_HOUR_SEC)
     user_before_playing_game_hash.delete(user_name) if user_before_playing_game_hash[user_name] == now_playng_game
   end
