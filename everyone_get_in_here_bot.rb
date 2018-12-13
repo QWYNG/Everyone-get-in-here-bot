@@ -21,13 +21,9 @@ bot.playing do |event|
   now_playng_game = event.user.game
   before_playing_game = user_before_playing_game_hash[user_name]
 
-  # ゲームをプレイしはじめてかつ前プレイしてるゲームと違うときのみ反応
   if now_playng_game && now_playng_game != before_playing_game
-    # 最初に見つけたテキストチャンネルをfirst_text_channelに代入
     first_text_channel = get_first_text_channel(event.server.channels)
-    # メッセージを送信
     event.bot.send_message(first_text_channel, "#{user_name} playing #{now_playng_game} now!")
-    # プレイしてるゲームをuser_played_game_hashに記録
     user_before_playing_game_hash[user_name] = now_playng_game
     # 二時間後に記録はリセット
     sleep(TWO_HOUR_SEC)
