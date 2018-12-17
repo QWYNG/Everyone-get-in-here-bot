@@ -4,7 +4,7 @@ CONFIG = YAML.load_file('config/config.yaml')
 TEXT_CHANNEL_TYPE_NUMBER = 0
 TWO_HOUR_SEC = 7200
 
-bot = Discordrb::Commands::CommandBot.new token: CONFIG['token'], prefix: '!'
+bot = Discordrb::Commands::CommandBot.new token: CONFIG['token'], client_id: 520551630421360640, prefix: '!'
 user_before_playing_game_hash = {}
 
 def get_first_text_channel(channles)
